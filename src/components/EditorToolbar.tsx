@@ -25,6 +25,9 @@ const EditorToolbar = ({ onUpload, onExport }: EditorToolbarProps) => {
           <Tooltip>
             <TooltipTrigger asChild>
               <div>
+                <label htmlFor="file-upload" className="sr-only">
+                  Upload file
+                </label>
                 <input
                   type="file"
                   accept=".md,.markdown"
@@ -32,7 +35,11 @@ const EditorToolbar = ({ onUpload, onExport }: EditorToolbarProps) => {
                   className="hidden"
                   id="file-upload"
                 />
-                <Button variant="outline" size="icon" onClick={() => document.getElementById('file-upload')?.click()}>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => document.getElementById("file-upload")?.click()}
+                >
                   <Upload className="h-4 w-4" />
                 </Button>
               </div>
