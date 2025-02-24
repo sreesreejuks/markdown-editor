@@ -1,18 +1,24 @@
 
 import { useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
 import Split from 'react-split';
-import Prism from 'prismjs';
+import MarkdownPreview from './MarkdownPreview';
 
 interface MarkdownEditorProps {
   markdown: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  isPreviewMode: boolean;
 }
 
-const MarkdownEditor = ({ markdown, onChange }: MarkdownEditorProps) => {
-  useEffect(() => {
-    Prism.highlightAll();
-  }, [markdown]);
+const MarkdownEditor = ({ markdown, onChange, isPreviewMode }: MarkdownEditorProps) => {
+  if (isPreviewMode) {
+    return (
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="h-[calc(100vh-12rem)] bg-gray-50 overflow-auto">
+          <MarkdownPreview markdown={markdown} fullScreen />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -31,8 +37,8 @@ const MarkdownEditor = ({ markdown, onChange }: MarkdownEditorProps) => {
             placeholder="Start typing your markdown here..."
           />
         </div>
-        <div className="h-[calc(100vh-12rem)] p-6 bg-gray-50 overflow-auto prose max-w-none">
-          <ReactMarkdown>{markdown}</ReactMarkdown>
+        <div className="h-[calc(100vh-12rem)] bg-gray-50 overflow-auto">
+          <MarkdownPreview markdown={markdown} />
         </div>
       </Split>
     </div>

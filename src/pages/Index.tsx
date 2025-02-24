@@ -8,6 +8,7 @@ import MarkdownEditor from '@/components/MarkdownEditor';
 const Index = () => {
   const [markdown, setMarkdown] = useState<string>('# Welcome to the Markdown Editor\n\nStart typing in markdown format to see the preview update in real-time!\n\n## Features\n\n- Split pane view\n- Live preview\n- Syntax highlighting\n- Clean design');
   const [fileName, setFileName] = useState<string>('document.md');
+  const [isPreviewMode, setIsPreviewMode] = useState<boolean>(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMarkdown(e.target.value);
@@ -40,11 +41,23 @@ const Index = () => {
     URL.revokeObjectURL(url);
   };
 
+  const handleTogglePreview = () => {
+    setIsPreviewMode(!isPreviewMode);
+  };
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
-        <EditorToolbar onUpload={handleUpload} onExport={handleExport} />
-        <MarkdownEditor markdown={markdown} onChange={handleChange} />
+        <EditorToolbar 
+          onUpload={handleUpload} 
+          onExport={handleExport} 
+          isPreviewMode={isPreviewMode}
+          onTogglePreview={handleTogglePreview}
+        />
+        <MarkdownEditor 
+          markdown={markdown} 
+          onChange={handleChange}
+          isPreviewMode={isPreviewMode}
+        />
       </div>
     </div>
   );
