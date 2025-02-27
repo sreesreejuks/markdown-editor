@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -58,8 +57,35 @@ export default {
         DEFAULT: {
           css: {
             maxWidth: 'none',
+            'pre': {
+              backgroundColor: 'white !important',
+              color: '#1e293b !important',
+            },
+            '.code-block-wrapper': {
+              backgroundColor: 'white !important',
+            },
+            '.code-header': {
+              backgroundColor: '#f8f9fa !important',
+              color: '#1e293b !important',
+            }
           },
         },
+        // Add dark mode overrides
+        dark: {
+          css: {
+            'pre': {
+              backgroundColor: 'white !important',
+              color: '#1e293b !important',
+            },
+            '.code-block-wrapper': {
+              backgroundColor: 'white !important',
+            },
+            '.code-header': {
+              backgroundColor: '#f8f9fa !important',
+              color: '#1e293b !important',
+            }
+          }
+        }
       },
       borderRadius: {
         lg: "var(--radius)",

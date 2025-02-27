@@ -39,11 +39,74 @@
   color: #111827;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
+  scroll-margin-top: 4rem;
+  position: relative;
 }
 
 .prose p {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+/* Table of Contents Styles */
+.prose ul li a {
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.prose ul li a:hover {
+  text-decoration: underline;
+  color: #3b82f6;
+}
+
+/* Heading Anchor Links */
+.prose h1 a, .prose h2 a, .prose h3 a, .prose h4 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.prose h1 a:hover, .prose h2 a:hover, .prose h3 a:hover, .prose h4 a:hover {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+/* Jekyll-style Code Block Styles */
+.code-block-wrapper {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.code-content pre {
+  background-color: white !important;
+  color: #1e293b !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.code-content code {
+  background-color: transparent !important;
+  color: #1e293b !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.line-numbers {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  user-select: none;
+}
+
+.line-number {
+  padding: 0 0.5rem;
+}
+
+/* Inline code styling */
+.prose :not(pre) > code {
+  background-color: #f3f4f6;
+  color: #ef4444;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /* Scrollbar Styles */
@@ -68,4 +131,118 @@
 /* Animation */
 .gutter, .gutter::after {
   transition: all 0.2s ease-in-out;
+}
+
+/* Code block header styles */
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  position: relative;
+  background-color: #f8f9fa !important;
+}
+
+.circles-container {
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.language-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-transform: lowercase;
+  z-index: 5;
+  pointer-events: none;
+  white-space: nowrap;
+  display: inline-block;
+  width: auto;
+}
+
+/* Override Prism.js dark theme if it's being used */
+.token {
+  color: inherit !important;
+  background: transparent !important;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #708090 !important;
+}
+
+.token.punctuation {
+  color: #708090 !important;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #905 !important;
+}
+
+.token.boolean,
+.token.number {
+  color: #905 !important;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #690 !important;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #9a6e3a !important;
+  background: transparent !important;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #07a !important;
+}
+
+.token.function,
+.token.class-name {
+  color: #DD4A68 !important;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #e90 !important;
+}
+
+/* Make sure code blocks have white background */
+code[class*="language-"],
+pre[class*="language-"] {
+  background-color: white !important;
+  text-shadow: none !important;
+}
+
+/* Add these new rules */
+.dark .code-header {
+  background-color: #f8f9fa !important;
+  color: #1e293b !important;
+}
+
+.dark .code-block-wrapper {
+  background-color: white !important;
+}
+
+.dark .language-label {
+  color: #1e293b !important;
 }
