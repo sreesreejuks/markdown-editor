@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import 'prismjs/themes/prism.css';
 import '../styles/editor.css';
@@ -8,7 +7,7 @@ import MarkdownEditor from '@/components/MarkdownEditor';
 const Index = () => {
   const [markdown, setMarkdown] = useState<string>('# Welcome to the Markdown Editor\n\nStart typing in markdown format to see the preview update in real-time!\n\n## Features\n\n- Split pane view\n- Live preview\n- Syntax highlighting\n- Clean design');
   const [fileName, setFileName] = useState<string>('document.md');
-  const [isPreviewMode, setIsPreviewMode] = useState<boolean>(false);
+  const [isPreviewMode, setIsPreviewMode] = useState<boolean>(true);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMarkdown(e.target.value);
