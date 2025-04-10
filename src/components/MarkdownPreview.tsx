@@ -1,9 +1,9 @@
-
 import React, { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import Prism from 'prismjs';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import remarkGfm from 'remark-gfm';
 import CodeBlock from './CodeBlock';
 import { Components } from 'react-markdown';
 
@@ -55,12 +55,26 @@ const MarkdownPreview = ({ markdown, fullScreen }: MarkdownPreviewProps) => {
           {children}
         </code>
       );
+    },
+    table({ children, ...props }) {
+      return (
+        <div className="table-wrapper">
+          <table {...props}>{children}</table>
+        </div>
+      );
+    },
+    th({ children, ...props }) {
+      return <th {...props}>{children}</th>;
+    },
+    td({ children, ...props }) {
+      return <td {...props}>{children}</td>;
     }
   };
 
   return (
     <div className={`prose prose-slate max-w-none p-4`}>
       <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
         rehypePlugins={[
           rehypeSlug,
           [rehypeAutolinkHeadings, { behavior: 'wrap' }]
